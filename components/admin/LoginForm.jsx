@@ -30,7 +30,7 @@ export default function LoginForm({ configured }) {
           <h1 className="mt-1 font-serif text-3xl">Admin sign in</h1>
         </div>
         {!configured && (
-          <p className="text-sm text-danger">Admin login isn&apos;t configured. Set ADMIN_USERNAME, ADMIN_PASSWORD and SESSION_SECRET in .env.local.</p>
+          <p className="text-sm text-danger">Admin login isn&apos;t configured. Set ADMIN_USERNAME and ADMIN_PASSWORD in .env.local.</p>
         )}
         <label className="flex flex-col gap-2">
           <span className="caps-label text-steel">Username</span>
