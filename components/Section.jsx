@@ -1,3 +1,5 @@
+import Rich from './Rich';
+
 // Document-style section: numbered label on the left, heading and content on the right.
 export default function Section({ id, no, label, title, intro, children }) {
   return (
@@ -8,7 +10,7 @@ export default function Section({ id, no, label, title, intro, children }) {
         </p>
         <div>
           <h2 className="max-w-[18ch] font-serif text-[clamp(34px,4.4vw,56px)] leading-[1.05] font-normal tracking-[-0.015em] [&_em]:text-white">
-            {title}
+            <Rich text={title} />
           </h2>
           {intro && <p className="mt-[18px] mb-10 max-w-[62ch] text-[17px] text-silver-mid">{intro}</p>}
         </div>

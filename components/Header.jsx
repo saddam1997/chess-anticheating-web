@@ -1,18 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { nav } from '@/content/site';
 import useHash from '@/hooks/useHash';
 import Logo from './Logo';
 
-export default function Header() {
+export default function Header({ brandName, nav }) {
   const [open, setOpen] = useState(false);
   const active = `#${useHash()}`;
 
   return (
     <header className="relative z-20 shrink-0 border-b border-rule bg-ink/95 backdrop-blur-sm">
       <div className="wrap flex h-16 items-center gap-10">
-        <a href="#top" className="no-underline" aria-label="Chess Shield home"><Logo /></a>
+        <a href="#top" className="no-underline" aria-label={`${brandName} home`}><Logo alt={brandName} /></a>
 
         <nav
           className={`${open ? 'flex' : 'hidden'} absolute inset-x-0 top-16 flex-col border-b border-rule bg-ink
@@ -31,12 +30,11 @@ export default function Header() {
           ))}
         </nav>
 
-        <a href="#features" className="btn btn-sm ml-auto hidden sm:inline-flex lg:ml-0">Explore platform</a>
         <button
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-label="Menu"
-          className="ml-auto h-8 rounded-[2px] border border-rule-strong px-3 font-mono text-xs text-silver-mid sm:ml-0 lg:hidden"
+          className="ml-auto h-8 rounded-[2px] border border-rule-strong px-3 font-mono text-xs text-silver-mid lg:hidden"
         >
           {open ? 'Close' : 'Menu'}
         </button>

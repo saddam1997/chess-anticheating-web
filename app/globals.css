@@ -62,6 +62,12 @@
       font-mono text-[11px] tracking-[0.04em] whitespace-nowrap text-silver-mid;
   }
   .tag-solid { @apply border-silver bg-silver text-ink; }
+
+  /* text inputs and textareas: flat, hairline border */
+  .field {
+    @apply min-h-10 w-full rounded-[2px] border border-rule-strong bg-transparent px-3 text-[15px] text-silver
+      placeholder:text-steel focus:border-silver focus:outline-none;
+  }
 }
 
 @utility wrap {

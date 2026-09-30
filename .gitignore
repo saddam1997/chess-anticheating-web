@@ -1,3 +1,9 @@
 node_modules
 .next
 out
+
+# runtime data written by the admin panel and contact form
+data
+
+# secrets
+.env*.local
