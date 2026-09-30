@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+/* ── Brand theme ───────────────────────────────────────────── */
+@theme {
+  /* only the brand palette is available as colour utilities */
+  --color-*: initial;
+  --color-ink: #080808;        /* Natural Black — primary background */
+  --color-charcoal: #1c1c1e;   /* Charcoal — secondary black */
+  --color-silver: #f2f2f2;     /* Silver White — primary logo */
+  --color-silver-mid: #bfc0c2; /* Silver Gray — metallic mid */
+  --color-steel: #77797c;      /* Steel Gray — shadow silver */
+  --color-white: #ffffff;
+  --color-danger: #e5484d;     /* serious violations only */
+  --color-rule: rgb(242 242 242 / 0.12);
+  --color-rule-strong: rgb(242 242 242 / 0.28);
+
+  --font-chess: 'Segoe UI Symbol', 'DejaVu Sans', 'Noto Sans Symbols 2', 'Apple Symbols', serif;
+
+  --breakpoint-sm: 560px;
+  --breakpoint-md: 820px;
+  --breakpoint-lg: 1100px;
+
+  --animate-drop: drop 0.35s ease-out;
+  --animate-rise: rise 0.3s ease-out;
+
+  @keyframes drop { from { opacity: 0; transform: translateY(-8px); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+}
+
+/* next/font variables, resolved where they're used */
+@theme inline {
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    @apply bg-ink font-sans text-base text-silver antialiased;
+    line-height: 1.55;
+  }
+  ::selection { background: var(--color-silver-mid); color: var(--color-ink); }
+  :focus-visible { outline: 1px solid var(--color-silver); outline-offset: 2px; }
+  button { cursor: pointer; }
+}
+
+/* ── Shared pieces used across sections ────────────────────── */
+@layer components {
+  /* flat, square buttons */
+  .btn {
+    @apply inline-flex h-10 items-center gap-2 rounded-[2px] border border-silver bg-silver px-4
+      text-sm font-medium whitespace-nowrap text-ink no-underline transition-colors duration-150
+      hover:border-white hover:bg-white;
+  }
+  .btn-line { @apply border-rule-strong bg-transparent text-silver hover:border-silver hover:bg-transparent; }
+  .btn-sm { @apply h-8 px-3 text-[13px]; }
+
+  /* status tag: "In development", "Coming soon", … */
+  .tag {
+    @apply inline-flex h-[22px] items-center rounded-[2px] border border-rule-strong px-2
+      font-mono text-[11px] tracking-[0.04em] whitespace-nowrap text-silver-mid;
+  }
+  .tag-solid { @apply border-silver bg-silver text-ink; }
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 560px) { padding-inline: 32px; }
+}
+
+/* small uppercase mono label for table heads and panel titles (colour set separately) */
+@utility caps-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* italic serif figure caption */
+@utility caption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--color-steel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
