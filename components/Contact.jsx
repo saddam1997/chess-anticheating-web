@@ -34,7 +34,11 @@ export default function Contact({ c, no, brand, contact }) {
             <Logo alt={brand.name} height={36} />
             <em className="font-serif text-[15px] text-steel">{brand.tagline}</em>
           </div>
-          <p>© {year} {brand.company}. All rights reserved.</p>
+          <p>
+            © {year} {brand.company}. All rights reserved.
+            <a href="/terms" className="ml-4 hover:text-silver">Terms &amp; Conditions</a>
+            <a href="/privacy" className="ml-4 hover:text-silver">Privacy Policy</a>
+          </p>
         </div>
       </footer>
     </>
